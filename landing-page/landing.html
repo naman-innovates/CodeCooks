@@ -1,57 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeCooks©</title>
     <link rel="stylesheet" href="landing.css" />
     <script src="landing.js" defer></script>
-    <script src="libs/rain.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  </head>
-
-  <body>
+</head>
+<body>
     <section class="layers">
-      <div class="layers__container">
-        <div
-          class="layers__item layer-1"
-          style="background-image: url(img/bg.png)"
-        ></div>
-        <div
-          class="layers__item layer-2"
-          style="background-image: url(img/editor.png)"
-        ></div>
-        <div class="layers__item layer-3">
-          <div class="hero-content">
-            <h1>CodeCooks</h1>
-            <div class="hero-content__p">
-              Your Personal Website Builder
+        <div class="layers__container">
+            <div class="layers__item layer-1"></div>
+            <div class="layers__item layer-3">
+                <div class="hero-content">
+                    <h1>CodeCooks</h1>
+                    <div class="hero-content__p">
+                        Your Personal Website Builder
+                    </div>
+                    <button class="button-start">Explore</button>
+                </div>
             </div>
-            <button class="button-start">Explore</button>
-          </div>
+            <div class="layers__item layer-5" style="background-image: url(img/element.png)"></div>
+            <div class="layers__item layer-6" style="background-image: url(./img/layer-6.png)"></div>
+            <!-- <div class="layers__item layer-6" style="background-image: url(./img/element2.png)"></div> -->
         </div>
-        <div class="layers__item layer-4">
-          <canvas class="rain"></canvas>
-        </div>
-        <div
-          class="layers__item layer-5"
-          style="background-image: url(img/element.png)"
-        ></div>
-        <div
-          class="layers__item layer-6"
-          style="background-image: url(img/layer-6.png)"
-        ></div>
-      </div>
     </section>
-
-    <!-- Loader animation integrated -->
-    <div class="loader">
-      <span>&lt;</span>
-      <span>COOKING...</span>
-      <span>/&gt;</span>
-    </div>
-  </body>
+</body>
 </html>
