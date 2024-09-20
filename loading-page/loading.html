@@ -1,22 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeCooks</title>
-  <link rel="stylesheet" href="loading.css">
-</head>
-<body>
-  <div class="spinner">
-    <span>C</span>
-    <span>O</span>
-    <span>D</span>
-    <span>E</span>
-    <span>C</span>
-    <span>O</span>
-    <span>O</span>
-    <span>K</span>
-    <span>S</span>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Spinner</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #1a1a1a;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      h1 {
+        color: #f5f5f5;
+        margin-bottom: 2rem;
+      }
+
+      .spinner {
+        height: 50px;
+        width: max-content;
+        font-size: 18px;
+        font-weight: 600;
+        font-family: monospace;
+        letter-spacing: 1em;
+        color: #f5f5f5;
+        filter: drop-shadow(0 0 10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .spinner span {
+        animation: loading6454 1.75s ease infinite;
+      }
+
+      .spinner span:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+
+      .spinner span:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+
+      .spinner span:nth-child(4) {
+        animation-delay: 0.75s;
+      }
+
+      .spinner span:nth-child(5) {
+        animation-delay: 1s;
+      }
+
+      .spinner span:nth-child(6) {
+        animation-delay: 1.25s;
+      }
+
+      .spinner span:nth-child(7) {
+        animation-delay: 1.5s;
+      }
+
+      @keyframes loading6454 {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="spinner">
+        <span>C</span>
+        <span>o</span>
+        <span>d</span>
+        <span>e</span>
+        <span>C</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span>s</span>
+      </div>
+    </div>
+  </body>
 </html>
