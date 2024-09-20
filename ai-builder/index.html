@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCooks©</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CodeCooks</h1>
+        <form id="websiteForm">
+            <textarea id="prompt" rows="4" placeholder="Describe your website..."></textarea>
+            <button type="submit" id="generateButton">Generate Website</button>
+        </form>
+        <div id="loadingIndicator" class="hidden">Generating your website...</div>
+        <div id="errorMessage" class="hidden"></div>
+        <div id="generatedContent" class="hidden">
+            <h2>Generated Website Preview</h2>
+            <div id="preview"></div>
+            <button id="showCodeButton">Show Code</button>
+        </div>
+        <div id="codeContainer" class="hidden">
+            <h2>Generated Website Code</h2>
+            <pre id="codeOutput"></pre>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.8/purify.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
