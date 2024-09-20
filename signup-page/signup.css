@@ -1,0 +1,218 @@
+:root {
+    --bg-color: #1a1a1a;
+    --bg-pattern-color1: #252525;
+    --bg-pattern-color2: #2f2f2f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-color);
+    background-image: 
+        linear-gradient(30deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+        linear-gradient(150deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+        linear-gradient(30deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+        linear-gradient(150deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+        linear-gradient(60deg, var(--bg-pattern-color2) 25%, transparent 25.5%, transparent 75%, var(--bg-pattern-color2) 75%, var(--bg-pattern-color2)),
+        linear-gradient(60deg, var(--bg-pattern-color2) 25%, transparent 25.5%, transparent 75%, var(--bg-pattern-color2) 75%, var(--bg-pattern-color2));
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    animation: move 10s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    }
+    100% {
+        background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px, 80px 140px, 120px 210px;
+    }
+}
+
+.glass-form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.eye-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.submit-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.or::before,
+.or::after {
+    content: "";
+    flex: 1; /* Makes the lines grow to fill available space */
+    height: 1px; /* Line height */
+    background-color: rgba(255, 255, 255, 0.5); /* Line color */
+    margin: 0 10px; /* Space between the line and text */
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.google-btn,
+.github-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.google-btn:hover,
+.github-btn:hover {
+    transform: scale(1.05); /* Hover effect without changing colors */
+}
+
+.google-btn i,
+.github-btn i {
+    margin-right: 8px; /* Space between icon and text */
+}
+.login-link{
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    margin-top: 15px;
+}
+.login-link a{
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s,ease;
+    font-weight: 600;
+    margin: 2px;
+}
+.form-footer {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 20px;
+}
+a:hover{
+    text-decoration: 1px underline;
+}
+
+@media (max-width: 480px) {
+    .glass-form {
+        padding: 25px;
+        width: 95%;
+    }
+}
