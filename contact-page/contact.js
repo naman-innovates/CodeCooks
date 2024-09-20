@@ -44,8 +44,27 @@ function validateForm(e) {
     }
 }
 
+function updateCharCount() {
+    const messageTextarea = document.getElementById('message');
+    const currentCount = document.getElementById('current');
+    const maxLength = messageTextarea.getAttribute('maxlength');
+    const currentLength = messageTextarea.value.length;
+    
+    currentCount.textContent = currentLength;
+    
+    if (currentLength === parseInt(maxLength)) {
+        currentCount.style.color = 'red';
+    } else {
+        currentCount.style.color = 'inherit';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     generateCaptcha();
     document.getElementById('refreshCaptcha').addEventListener('click', generateCaptcha);
     document.getElementById('contactForm').addEventListener('submit', validateForm);
+    
+    const messageTextarea = document.getElementById('message');
+    messageTextarea.addEventListener('input', updateCharCount);
+    updateCharCount(); // Initialize character count
 });
