@@ -369,12 +369,27 @@
   
   .frameBox {
     position: fixed;
-    left: 2.5vw;
+    left: calc(2.5vw + 80px); /* Adjusted to account for sidebar width */
     top: 17.5vh;
     width: 14.6354vw;
     aspect-ratio: 3/2;
     border: 1.34px solid rgba(255, 255, 255, 0.2);
     will-change: transform;
+  }
+
+  .sidebar:hover ~ .content .frameBox {
+    left: calc(2.5vw + 250px); /* Adjusted for expanded sidebar */
+    transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .content {
+    margin-left: 80px;
+    padding: 20px;
+    transition: margin-left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .sidebar:hover ~ .content {
+    margin-left: 250px;
   }
   
   .smallNav {
@@ -384,11 +399,15 @@
     font-size: 0.5409vw;
     line-height: 0.7011vw;
     position: fixed;
-    left: 5vw;
+    left: calc(5vw + 80px);
     top: 0;
     padding-top: 20vh;
     will-change: transform;
     padding-bottom: 5rem;
+  }
+  .sidebar:hover ~ .content .smallNav {
+    left: calc(5vw + 250px); /* Adjusted for expanded sidebar */
+    transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
   .smallNav .textBox p {
     font-size: 0.5409vw;
