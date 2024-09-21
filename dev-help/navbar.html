@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation with Animated Background</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --bg-pattern-color1: #252525;
+            --bg-pattern-color2: #2f2f2f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(30deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+                linear-gradient(150deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+                linear-gradient(30deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+                linear-gradient(150deg, var(--bg-pattern-color1) 12%, transparent 12.5%, transparent 87%, var(--bg-pattern-color1) 87.5%, var(--bg-pattern-color1)),
+                linear-gradient(60deg, var(--bg-pattern-color2) 25%, transparent 25.5%, transparent 75%, var(--bg-pattern-color2) 75%, var(--bg-pattern-color2)),
+                linear-gradient(60deg, var(--bg-pattern-color2) 25%, transparent 25.5%, transparent 75%, var(--bg-pattern-color2) 75%, var(--bg-pattern-color2));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            animation: move 10s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            }
+            100% {
+                background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px, 80px 140px, 120px 210px;
+            }
+        }
+
+        .sidebar {
+            width: 80px;
+            height: 100vh;
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .sidebar:hover {
+            width: 250px;
+        }
+
+        .logo {
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar:hover .logo img {
+            transform: scale(1.2);
+        }
+
+        .nav-links {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-item {
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .nav-item span {
+            display: none;
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        .sidebar:hover .nav-item {
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+
+        .sidebar:hover .nav-item span {
+            display: inline;
+        }
+
+        .login {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .profile-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .profile-icon i {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .profile-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .auth-links {
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1em;
+        }
+
+        .auth-link {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+
+        .auth-links span {
+            color: #ffffff;
+            margin: 0 5px;
+        }
+
+        .sidebar:hover .auth-links {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+            }
+            .sidebar:hover {
+                width: 200px;
+            }
+        }
+
+        .content {
+            margin-left: 80px;
+            padding: 20px;
+            transition: margin-left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .sidebar:hover + .content {
+            margin-left: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="https://via.placeholder.com/40" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-globe"></i>
+                <span>AI Prompt to Website</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-mouse-pointer"></i>
+                <span>Design to Website</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Meet Us</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span>Contact Us</span>
+            </a>
+        </div>
+        <div class="login">
+            <div class="profile-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="auth-links">
+                <a href="#" class="auth-link">Login</a>
+                <span>/</span>
+                <a href="#" class="auth-link">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
