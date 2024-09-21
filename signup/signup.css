@@ -58,43 +58,43 @@ body {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 30px 40px;
+    padding: 40px 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 95%;
+    width: 100%;
     max-width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 h2 {
     text-align: center;
     color: #ffffff;
     font-weight: 600;
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    margin-bottom: 15px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
 label {
-    font-size: 14px;
+    font-size: 15px;
     color: #ffffff;
     font-weight: 300;
 }
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Poppins', sans-serif;
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
@@ -107,30 +107,37 @@ input:focus {
 
 .password-wrapper {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.eye-button {
+.password-wrapper input {
+    flex: 1;
+}
+
+.password-wrapper i {
     position: absolute;
     right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
     color: #ffffff;
     cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.password-wrapper i:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .submit-btn {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
 
@@ -139,20 +146,29 @@ input:focus {
 }
 
 .or {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    font-weight: bold;
-    color: #ffffff;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    margin: 10px 0;
+    position: relative;
 }
 
 .or::before,
 .or::after {
     content: "";
-    flex: 1; /* Makes the lines grow to fill available space */
-    height: 1px; /* Line height */
-    background-color: rgba(255, 255, 255, 0.5); /* Line color */
-    margin: 0 10px; /* Space between the line and text */
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.or::before {
+    left: 0;
+}
+
+.or::after {
+    right: 0;
 }
 
 .social-buttons {
@@ -165,54 +181,58 @@ input:focus {
 .github-btn {
     width: 100%;
     padding: 12px;
-    background-color: #000000; /* Black background */
-    color: #ffffff; /* White text */
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s;
 }
 
 .google-btn:hover,
 .github-btn:hover {
-    transform: scale(1.05); /* Hover effect without changing colors */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .google-btn i,
 .github-btn i {
-    margin-right: 8px; /* Space between icon and text */
+    margin-right: 10px;
 }
-.login-link{
+
+.login-link {
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
     font-size: 15px;
     margin-top: 15px;
 }
-.login-link a{
+
+.login-link a {
     color: #ffffff;
     text-decoration: none;
     border-bottom: 2px solid transparent;
-    transition: color 0.3s, border-color 0.3s,ease;
+    transition: color 0.3s, border-color 0.3s ease;
     font-weight: 600;
-    margin: 2px;
 }
+
+.login-link a:hover {
+    color: #f8f8f8;
+    border-color: #f8f8f8;
+}
+
 .form-footer {
     text-align: center;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.6);
-    margin-top: 20px;
-}
-a:hover{
-    text-decoration: 1px underline;
+    margin-top: 25px;
 }
 
 @media (max-width: 480px) {
     .glass-form {
-        padding: 25px;
+        padding: 30px;
         width: 95%;
     }
 }

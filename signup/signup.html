@@ -3,46 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sign Up - CodeCooks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="glass-form">
+        <form id="signupForm" class="glass-form">
             <h2>Sign Up</h2>
-            <form id="signupForm">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                </div>
-                <br>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="password" placeholder="Enter your password" required>
-                        <button type="button" id="togglePassword" class="eye-button">
-                            <i class="fas fa-eye" id="eyeIcon"></i>
-                        </button>
-                    </div>
-                </div>
-                <br><br>
-                <button type="submit" class="submit-btn">Sign Up</button>
-                <div class="or">OR</div>
-                <div class="social-buttons">
-                    <button class="google-btn">
-                        <i class="fab fa-google"></i> Sign up with Google
-                    </button>
-                    <button class="github-btn">
-                        <i class="fab fa-github"></i> Sign up with GitHub
-                    </button>
-                </div>
-            </form>
-            <div class="login-link">
-                <p>Already have an account? <a href="#">Log In</a></p>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" required>
+                    <i class="fas fa-eye" id="togglePassword"></i>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Sign Up</button>
+            <div class="or">OR</div>
+            <div class="social-buttons">
+                <button type="button" class="google-btn">
+                    <i class="fab fa-google"></i> Sign up with Google
+                </button>
+                <button type="button" class="github-btn">
+                    <i class="fab fa-github"></i> Sign up with GitHub
+                </button>
+            </div>
+            <div class="login-link">
+                <p>Already have an account? <a href="../login/login.html">Log In</a></p>
+            </div>
+        </form>
         <footer class="form-footer">
             Copyright © CodeCooks, Inc.
         </footer>
