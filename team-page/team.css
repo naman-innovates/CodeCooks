@@ -15,16 +15,18 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: var(--bg-color);
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .wrapper {
     position: relative;
     z-index: 1;
+    padding-bottom: 60px; /* Add space for footer */
 }
 
 .wrapper::before {
@@ -179,4 +181,16 @@ body {
 .content .sci li a {
     color: #fff;
     font-size: 24px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    z-index: 1000;
 }
