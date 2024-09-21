@@ -17,7 +17,7 @@
 body {
     background-color: #000;
     color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }
 
@@ -33,6 +33,7 @@ body {
     transform: rotateX(var(--move-y)) rotateY(var(--move-x));
     will-change: transform;
     transition: transform var(--transition);
+    position: relative; /* Ensure relative position for stacking child elements */
 }
 
 .layers__item {
@@ -71,6 +72,7 @@ body {
 
 .layer-3 {
     transform: translateZ(180px) scale(.8);
+    z-index: 2; /* Make sure it is on top of other layers */
 }
 
 .layer-5 {
@@ -79,10 +81,12 @@ body {
 
 .layer-6 {
     transform: translateZ(300px) scale();
-	opacity: 60%;
+    opacity: 60%;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 10; /* Ensure it's on top */
     font-size: calc(var(--index) * 2.9);
     text-align: center;
     text-transform: none;
@@ -97,20 +101,4 @@ body {
     letter-spacing: normal;
     font-size: calc(var(--index) * .73);
     line-height: 3;
-}
-
-.button-start {
-    font-family: Arial, sans-serif;
-    font-weight: 600;
-    text-transform: none;
-    font-size: calc(var(--index) * .71);
-    letter-spacing: -.02vw;
-    padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
-    background-color: transparent;
-    color: #fff;
-    border-radius: 10em;
-    border: rgb(255 255 255 / .4) 3px solid;
-    outline: none;
-    cursor: pointer;
-    margin-top: calc(var(--index) * 2.5);
 }
