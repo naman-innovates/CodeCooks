@@ -7,7 +7,6 @@ const loadingIndicator = document.getElementById("loadingIndicator");
 const errorMessage = document.getElementById("errorMessage");
 
 let generatedHtml = "";
-let eventSource;
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -22,34 +21,33 @@ form.addEventListener("submit", async (e) => {
   const enhancedPrompt = `Generate a single HTML file by giving just the code and no extra text, make css in <styles></styles> and javascript in <script></script> for the following: ${originalPrompt}`;
 
   try {
-    eventSource = new EventSource(
-      `/generate-website?prompt=${encodeURIComponent(enhancedPrompt)}`
-    );
+    const response = await fetch(`/generate-website?prompt=${encodeURIComponent(enhancedPrompt)}`);
+    const reader = response.body.getReader();
 
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.content) {
-        generatedHtml += data.content;
-        codeOutput.textContent = generatedHtml;
-        updatePreview();
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      const chunk = new TextDecoder().decode(value);
+      const lines = chunk.split('\n');
+      
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          const data = JSON.parse(line.slice(6));
+          if (data.content) {
+            generatedHtml += data.content;
+            codeOutput.textContent = generatedHtml;
+            updatePreview();
+          }
+        }
       }
-    };
+    }
 
-    eventSource.onerror = () => {
-      eventSource.close();
-      generateButton.disabled = false;
-      loadingIndicator.classList.add("hidden");
-    };
-
-    eventSource.addEventListener("done", () => {
-      eventSource.close();
-      generateButton.disabled = false;
-      loadingIndicator.classList.add("hidden");
-    });
+    generateButton.disabled = false;
+    loadingIndicator.classList.add("hidden");
   } catch (error) {
     console.error("Error generating website:", error);
-    errorMessage.textContent =
-      "An error occurred while generating the website. Please try again.";
+    errorMessage.textContent = "An error occurred while generating the website. Please try again.";
     errorMessage.classList.remove("hidden");
     generateButton.disabled = false;
     loadingIndicator.classList.add("hidden");
