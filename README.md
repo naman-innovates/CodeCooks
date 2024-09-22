@@ -62,22 +62,6 @@ node server.js
 - Experiment with the drag-and-drop website designer in the "Design to Website" section.
 - Contact the team using the contact form on the Contact Us page.
 
-## Project Structure
-
-codecooks/
-   ├── landing-page/
-   ├── home-page/
-   ├── about-page/
-   ├── ai-builder/
-   │     └── server/
-   ├── designer-cum-builder/
-   ├── team-page/
-   ├── contact-page/
-   ├── login/
-   ├── signup/
-   ├── index.html
-   └── README.md
-
 ## Technologies Used
 
 - HTML5
