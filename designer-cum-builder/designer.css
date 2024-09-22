@@ -1,0 +1,54 @@
+.element {
+    position: absolute;
+    min-width: 50px;
+    min-height: 50px;
+    border: 1px solid #ccc;
+    cursor: move;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.resize-handle {
+    width: 10px;
+    height: 10px;
+    background-color: #4299e1;
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    cursor: se-resize;
+    border-radius: 50%;
+}
+
+.element.selected {
+    border: 2px solid #4299e1;
+}
+
+#canvas {
+    position: relative;
+    min-height: 100%;
+}
+
+.page-tab {
+    padding: 0.5rem 1rem;
+    background-color: #e2e8f0;
+    border-radius: 0.25rem 0.25rem 0 0;
+    margin-right: 0.25rem;
+    cursor: pointer;
+}
+
+.page-tab.active {
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.button-element {
+    cursor: pointer;
+}
+
+.grid {
+    background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+                      linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+}
