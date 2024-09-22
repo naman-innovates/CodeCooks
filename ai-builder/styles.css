@@ -1,51 +1,312 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    margin: 0;
-    padding: 20px;
+:root {
+    --bg-color: #1a1a1a;
+    --bg-pattern-color1: #252525;
+    --bg-pattern-color2: #2f2f2f;
+    --text-color: #ffffff;
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --disabled-color: #95a5a6;
+    --error-color: #e74c3c;
+    --loading-color: #f39c12;
+    --border-color: #444;
+    --transition: 0.3s;
+    --spark: 1.8s;
+    --cut: 0.1em;
+    --glass-bg-color: rgba(30, 30, 30, 0.3);
 }
 
-.container {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: var(--bg-color);
+  background-image: linear-gradient(
+      30deg,
+      var(--bg-pattern-color1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--bg-pattern-color1) 87.5%,
+      var(--bg-pattern-color1)
+    ),
+    linear-gradient(
+      150deg,
+      var(--bg-pattern-color1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--bg-pattern-color1) 87.5%,
+      var(--bg-pattern-color1)
+    ),
+    linear-gradient(
+      30deg,
+      var(--bg-pattern-color1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--bg-pattern-color1) 87.5%,
+      var(--bg-pattern-color1)
+    ),
+    linear-gradient(
+      150deg,
+      var(--bg-pattern-color1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--bg-pattern-color1) 87.5%,
+      var(--bg-pattern-color1)
+    ),
+    linear-gradient(
+      60deg,
+      var(--bg-pattern-color2) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      var(--bg-pattern-color2) 75%,
+      var(--bg-pattern-color2)
+    ),
+    linear-gradient(
+      60deg,
+      var(--bg-pattern-color2) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      var(--bg-pattern-color2) 75%,
+      var(--bg-pattern-color2)
+    );
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  animation: move 10s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  }
+  100% {
+    background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px,
+      80px 140px, 120px 210px;
+  }
+}
+
+.content-container {
     max-width: 1200px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
+    width: 100%;
+    background-color: var(--glass-bg-color);
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
-h1, h2 {
-    color: #2c3e50;
+h1,
+h2 {
+  color: var(--text-color);
+  margin-bottom: 20px;
 }
 
 textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     resize: vertical;
+    background-color: var(--glass-bg-color);
+    color: var(--text-color);
 }
 
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+.sparkle-button {
+  --active: 0;
+  --bg: radial-gradient(
+      40% 50% at center 100%,
+      hsl(0 0% 30% / var(--active)),
+      transparent
+    ),
+    radial-gradient(
+      80% 100% at center 120%,
+      hsl(0 0% 40% / var(--active)),
+      transparent
+    ),
+    hsl(0 0% calc((var(--active) * 20%) + 10%));
+  background: var(--bg);
+  font-size: 1rem;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+  padding: 0.7em 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  white-space: nowrap;
+  border-radius: 100px;
+  position: relative;
+  box-shadow: 0 0 calc(var(--active) * 3em) calc(var(--active) * 1em)
+      hsl(0 0% 50% / 0.75),
+    0 0em 0 0 hsl(0 0% calc((var(--active) * 30%) + 20%)) inset,
+    0 -0.05em 0 0 hsl(0 0% calc(var(--active) * 40%)) inset;
+  transition: box-shadow var(--transition), scale var(--transition),
+    background var(--transition);
+  scale: calc(1 + (var(--active) * 0.1));
+  transition: 0.3s;
 }
 
-button:hover {
-    background-color: #2980b9;
+.sparkle-button:active {
+  scale: 1;
+  transition: 0.3s;
 }
 
-button:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
+.sparkle path {
+  color: hsl(0 0% calc((var(--active, 0) * 70%) + var(--base)));
+  transform-box: fill-box;
+  transform-origin: center;
+  fill: currentColor;
+  stroke: currentColor;
+  animation-delay: calc((var(--transition) * 1.5) + (var(--delay) * 1s));
+  animation-duration: 0.6s;
+  transition: color var(--transition);
+}
+
+.sparkle-button:is(:hover, :focus-visible) {
+  --active: 1;
+  --play-state: running;
+}
+
+.sparkle-button:is(:hover, :focus-visible) path {
+  animation-name: bounce;
+}
+
+@keyframes bounce {
+  35%,
+  65% {
+    scale: var(--scale);
+  }
+}
+
+.sparkle path:nth-of-type(1) {
+  --scale: 0.5;
+  --delay: 0.1;
+  --base: 40%;
+}
+
+.sparkle path:nth-of-type(2) {
+  --scale: 1.5;
+  --delay: 0.2;
+  --base: 20%;
+}
+
+.sparkle path:nth-of-type(3) {
+  --scale: 2.5;
+  --delay: 0.35;
+  --base: 30%;
+}
+
+.sparkle-button:before {
+  content: "";
+  position: absolute;
+  inset: -0.2em;
+  z-index: -1;
+  border: 0.25em solid hsl(0 0% 50% / 0.5);
+  border-radius: 100px;
+  opacity: var(--active, 0);
+  transition: opacity var(--transition);
+}
+
+.spark {
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  rotate: 0deg;
+  overflow: hidden;
+  mask: linear-gradient(white, transparent 50%);
+  animation: flip calc(var(--spark) * 2) infinite steps(2, end);
+}
+
+@keyframes flip {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.spark:before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  aspect-ratio: 1;
+  top: 0%;
+  left: 50%;
+  z-index: -1;
+  translate: -50% -15%;
+  rotate: 0;
+  transform: rotate(-90deg);
+  opacity: calc((var(--active)) + 0.4);
+  background: conic-gradient(from 0deg, transparent 0 340deg, white 360deg);
+  transition: opacity var(--transition);
+  animation: rotate var(--spark) linear infinite both;
+}
+
+.spark:after {
+  content: "";
+  position: absolute;
+  inset: var(--cut);
+  border-radius: 100px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: var(--cut);
+  background: var(--bg);
+  border-radius: 100px;
+  transition: background var(--transition);
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+.text {
+  translate: 2% -6%;
+  letter-spacing: 0.01ch;
+  background: linear-gradient(
+    90deg,
+    hsl(0 0% calc((var(--active) * 100%) + 65%)),
+    hsl(0 0% calc((var(--active) * 100%) + 26%))
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: background var(--transition);
+}
+
+.sparkle-button:hover .text {
+  background: linear-gradient(90deg, hsl(0 0% 100%), hsl(0 0% 80%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.sparkle-button svg {
+  inline-size: 1.25em;
+  translate: -25% -5%;
 }
 
 .split-view {
@@ -56,15 +317,15 @@ button:disabled {
 
 .code-view, .preview-view {
     flex: 1;
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: var(--glass-bg-color);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 20px;
 }
 
 #codeOutput {
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
+    background-color: rgba(40, 40, 40, 0.5);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 10px;
     white-space: pre-wrap;
@@ -72,12 +333,14 @@ button:disabled {
     overflow-x: auto;
     max-height: 400px;
     overflow-y: auto;
+    color: var(--text-color);
 }
 
 #previewFrame {
     width: 100%;
     height: 400px;
     border: none;
+    background-color: white;
 }
 
 .hidden {
@@ -91,11 +354,11 @@ button:disabled {
 }
 
 #loadingIndicator {
-    background-color: #f39c12;
-    color: white;
+    background-color: var(--loading-color);
+    color: var(--text-color);
 }
 
 #errorMessage {
-    background-color: #e74c3c;
-    color: white;
+    background-color: var(--error-color);
+    color: var(--text-color);
 }
