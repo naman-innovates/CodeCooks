@@ -26,12 +26,12 @@ CodeCooks is an innovative AI-powered website builder that combines creativity w
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ayushmaninbox/parallax-effect/
+git clone https://github.com/ayushmaninbox/codecooks/
 ```
 
 2. Navigate to the project directory:
 ```bash
-cd codecooks-website
+cd codecooks
 ```
 
 3. Install dependencies:
