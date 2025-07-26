@@ -26,7 +26,7 @@ CodeCooks is an innovative AI-powered website builder that combines creativity w
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ayushmaninbox/codecooks/
+git clone https://github.com/naman-innovates/CodeCooks
 ```
 
 2. Navigate to the project directory:
@@ -83,7 +83,6 @@ This project is licensed under the MIT License - see below for details:
 
 MIT License
 
-Copyright (c) 2024 ayushmaninbox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
